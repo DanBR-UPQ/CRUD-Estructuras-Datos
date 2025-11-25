@@ -114,8 +114,50 @@ public class CRUDopciones {
     }
 
 
-    public void imprimir(CLista lista){
-        lista.imprimir();
+    public void imprimir(CPila pila){
+        if (pila.tamano == 0) {
+            System.out.println("No hay elementos");
+        } else {
+            pila.peek().imprimir();
+            System.out.println("tamano de la lista: " + pila.peek().tamano);
+        }
+    }
+
+
+    public CLista duplicar(CLista lista){
+        CLista nueva = new CLista();
+        CNodo temp = lista.prim;
+
+
+        while (temp != null) {
+            CJugador jug = new CJugador(temp.jugador.id, temp.jugador.nombre, temp.jugador.chips, temp.jugador.juego);
+            CNodo nodo = new CNodo(jug);
+            nueva.addULT(nodo);
+            temp = temp.sig;
+        }
+
+        return nueva;
+    }
+
+
+
+
+
+    public void undo(CPila UndoPila, CPila RedoPila){
+        if (UndoPila.tamano == 0){
+            System.out.println("No hay opciones que deshacer");
+        } else {
+            RedoPila.push(UndoPila.pop());
+            System.out.println("Undo realizado exitosamente");
+        }  
+    }
+    public void redo(CPila UndoPila, CPila RedoPila){
+        if (RedoPila.tamano == 0){
+            System.out.println("No hay opciones que rehacer");
+        } else {
+            UndoPila.push(RedoPila.pop());
+            System.out.println("Redo realizado exitosamente");
+        }  
     }
 
 

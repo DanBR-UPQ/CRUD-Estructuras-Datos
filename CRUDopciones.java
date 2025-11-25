@@ -151,6 +151,7 @@ public class CRUDopciones {
             System.out.println("Undo realizado exitosamente");
         }  
     }
+    /* TODO: Limpiar el redo después de cada cambio */
     public void redo(CPila UndoPila, CPila RedoPila){
         if (RedoPila.tamano == 0){
             System.out.println("No hay opciones que rehacer");

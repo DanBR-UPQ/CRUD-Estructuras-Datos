@@ -56,7 +56,10 @@ public class CPila {
     }
 
 
-
+    void borrar() {
+        primero = ultimo = null;
+        tamano = 0;
+    }
 
 
 }

@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class CRUDopciones {
     Scanner teclado = new Scanner(System.in);
     
-    public void agregar(CLista lista){
+    public void agregar(CLista lista, CListaLog listaLog){
         
         CJugador jugador = new CJugador();
         int id;
@@ -27,11 +27,15 @@ public class CRUDopciones {
 
             CNodo nodo = new CNodo(jugador);
             lista.addULT(nodo);
+
+            CLog log = new CLog("agregar", id);
+            CNodo3 nodoLog = new CNodo3(log);
+            listaLog.addULT(nodoLog);
         }
     }
 
 
-    public void eliminar(CLista lista){
+    public void eliminar(CLista lista, CListaLog listaLog){
 
         if (lista.tamano == 0){
             System.out.println("No hay ningún registro..");
@@ -49,12 +53,15 @@ public class CRUDopciones {
         } else {
             lista.eliminar(nodo);
             System.out.println("El registro fue eliminado exitosamente");
+            CLog log = new CLog("Eliminar", idEliminar);
+            CNodo3 nodoLog = new CNodo3(log);
+            listaLog.addULT(nodoLog);
         }
 
     }
 
 
-    public void actualizar(CLista lista){
+    public void actualizar(CLista lista, CListaLog listaLog){
 
         if (lista.tamano == 0){
             System.out.println("No hay ningún registro..");
@@ -108,6 +115,9 @@ public class CRUDopciones {
                 default:
                     System.out.println("Opción inválida");
             }
+            CLog log = new CLog("Actualizar", idActualizar);
+            CNodo3 nodoLog = new CNodo3(log);
+            listaLog.addULT(nodoLog);
         }
 
         
@@ -119,7 +129,7 @@ public class CRUDopciones {
             System.out.println("No hay elementos");
         } else {
             pila.peek().imprimir();
-            System.out.println("tamano de la lista: " + pila.peek().tamano);
+            /* System.out.println("tamano de la lista: " + pila.peek().tamano); */
         }
     }
 

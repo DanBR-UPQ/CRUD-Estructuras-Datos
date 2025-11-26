@@ -7,14 +7,16 @@ public class CRUDmain {
     public static void main(String[] args) {
         CPila UndoPila = new CPila();
         CPila RedoPila = new CPila();
+        CListaLog listaLog = new CListaLog();
+
+        CLista lista = new CLista();
+        CRUDopciones opcion = new CRUDopciones();
 
 
         Scanner teclado = new Scanner(System.in);
         boolean continuar = true, esOpcion;
         int seleccion = 0;
 
-        CLista lista = new CLista();
-        CRUDopciones opcion = new CRUDopciones();
 
         System.out.println("Bienvenido al sistema CRUDJugadores");
 
@@ -37,27 +39,30 @@ public class CRUDmain {
                 }
             }
 
-            /* TODO: Limpiar el código */
+            System.out.println("\n----------------------------");
             switch(seleccion){
                 case 1: {
                     CLista nueva = opcion.duplicar(lista);
-                    opcion.agregar(nueva);
+                    opcion.agregar(nueva, listaLog);
                     CNodo2 nodo = new CNodo2(nueva);
                     UndoPila.push(nodo);
+                    RedoPila.borrar();
                     break;
                 }
                 case 2: {
                     CLista nueva = opcion.duplicar(lista);
-                    opcion.eliminar(nueva);
+                    opcion.eliminar(nueva, listaLog);
                     CNodo2 nodo = new CNodo2(nueva);
                     UndoPila.push(nodo);
+                    RedoPila.borrar();
                     break;
                 }
                 case 3: {
                     CLista nueva = opcion.duplicar(lista);
-                    opcion.actualizar(nueva);
+                    opcion.actualizar(nueva, listaLog);
                     CNodo2 nodo = new CNodo2(nueva);
                     UndoPila.push(nodo);
+                    RedoPila.borrar();
                     break;
                 }
                 case 4:
@@ -67,8 +72,7 @@ public class CRUDmain {
                     opcion.redo(UndoPila, RedoPila);
                     break;
                 case 6:
-                    /* TODO: log */
-                    System.out.println("Proximamente..");
+                    listaLog.imprimir();
                     break;
                 case 7:
                     opcion.imprimir(UndoPila);
@@ -77,8 +81,14 @@ public class CRUDmain {
                     System.out.println("Gracias por usar el sistema CRUDJugadores");
                     continuar = false;
             }
+            System.out.println("----------------------------\n");
 
-            lista = UndoPila.peek();
+            
+            if(UndoPila.peek() == null) {
+                lista = new CLista();
+            } else {
+                lista = UndoPila.peek();
+            }
             
         }
         teclado.close();

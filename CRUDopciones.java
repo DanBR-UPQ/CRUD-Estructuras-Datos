@@ -53,6 +53,7 @@ public class CRUDopciones {
         } else {
             lista.eliminar(nodo);
             System.out.println("El registro fue eliminado exitosamente");
+
             CLog log = new CLog("Eliminar", idEliminar);
             CNodo3 nodoLog = new CNodo3(log);
             listaLog.addULT(nodoLog);
@@ -115,6 +116,7 @@ public class CRUDopciones {
                 default:
                     System.out.println("Opción inválida");
             }
+
             CLog log = new CLog("Actualizar", idActualizar);
             CNodo3 nodoLog = new CNodo3(log);
             listaLog.addULT(nodoLog);
@@ -129,6 +131,7 @@ public class CRUDopciones {
             System.out.println("No hay elementos");
         } else {
             pila.peek().imprimir();
+            /* lista.imprimir() */
             /* System.out.println("tamano de la lista: " + pila.peek().tamano); */
         }
     }
@@ -161,7 +164,6 @@ public class CRUDopciones {
             System.out.println("Undo realizado exitosamente");
         }  
     }
-    /* TODO: Limpiar el redo después de cada cambio */
     public void redo(CPila UndoPila, CPila RedoPila){
         if (RedoPila.tamano == 0){
             System.out.println("No hay opciones que rehacer");

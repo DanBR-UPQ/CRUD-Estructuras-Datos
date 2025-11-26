@@ -18,6 +18,11 @@ public class CRUDmain {
         int seleccion = 0;
 
 
+
+        DatosTest.agregarDatos(lista, listaLog, UndoPila);
+
+
+
         System.out.println("Bienvenido al sistema CRUDJugadores");
 
         while(continuar){

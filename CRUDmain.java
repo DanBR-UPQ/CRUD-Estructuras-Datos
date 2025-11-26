@@ -22,11 +22,11 @@ public class CRUDmain {
 
         while(continuar){
 
-            System.out.println("\nMenu Principal \n---- JUGADORES ----");
-            System.out.println("1. Agregar                \t5. Rehacer (proximamente)");
-            System.out.println("2. Eliminar               \t6. Log (proximamente)");
-            System.out.println("3. Actualizar             \t7. Imprimir");
-            System.out.println("4. Deshacer (proximamente)\t8. Salir");
+            System.out.println("\nMenu Principal \n--------  JUGADORES  --------");
+            System.out.println("1. Agregar          \t5. Rehacer");
+            System.out.println("2. Eliminar         \t6. Log");
+            System.out.println("3. Actualizar       \t7. Imprimir");
+            System.out.println("4. Deshacer         \t8. Salir");
             esOpcion = false;
             
             while (!esOpcion) { 

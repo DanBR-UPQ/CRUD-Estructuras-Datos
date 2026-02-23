@@ -23,7 +23,7 @@ public class LinkedList {
         if(tamano == 0){
             prim = ult = nodo;
         } else {
-            ult.sig = nodo;
+            ult.setSig(nodo);
             ult = nodo; 
         }
         tamano++;
@@ -36,8 +36,8 @@ public class LinkedList {
             ListNode test = prim;
 
             while(test != null){
-                test.jugador.imprimir();
-                test = test.sig;
+                test.getJugador().imprimir();
+                test = test.getSig();
             }
         }
     }
@@ -46,10 +46,10 @@ public class LinkedList {
             ListNode test = prim;
 
             while(test != null){
-                if(test.jugador.getId() == ID){
+                if(test.getJugador().getId() == ID){
                     return test; 
                 }
-                test = test.sig;
+                test = test.getSig();
             }
             return null;
     }
@@ -60,17 +60,17 @@ public class LinkedList {
         if(tamano == 1){
             prim = ult = null;
         } else if (nodo == prim){
-            prim = prim.sig;
+            prim = prim.getSig();
         } else{
             while(test != null){
-                if(test.sig == nodo){
-                    test.sig = test.sig.sig;
+                if(test.getSig() == nodo){
+                    test.setSig(test.getSig().getSig());
                     if (nodo == ult){
                         ult = test;
                     }
                     break;
                 }
-                test = test.sig;
+                test = test.getSig();
             }
         }
         tamano--;

@@ -11,12 +11,22 @@ public class Stack {
 		tamano = 0;
 	}
 
+    public int getSize(){
+        return tamano;
+    }
+    public StackNode getPrim(){
+        return primero;
+    }
+    public StackNode getUlt(){
+        return ultimo;
+    }
+
 
     public void push(StackNode nodo){
         if (tamano == 0){
             primero = ultimo = nodo;
         } else {
-            ultimo.sig = nodo;
+            ultimo.setSig(nodo);;
             ultimo = nodo;
         }
         tamano++;
@@ -28,7 +38,7 @@ public class Stack {
             /* System.out.println("No hay elementos"); */
             return null;
         } else {
-            return ultimo.lista;
+            return ultimo.getList();
         }
     }
 
@@ -45,14 +55,14 @@ public class Stack {
         } else{
             StackNode temp = primero;
             while(temp != null){
-                if(temp.sig == ultimo){
+                if(temp.getSig() == ultimo){
                     StackNode temp2 = ultimo;
-                    temp.sig = null;
+                    temp.setSig(null);
                     tamano--;
                     ultimo = temp;
                     return temp2;
                 }
-                temp = temp.sig;
+                temp = temp.getSig();
             }
         }
         return null;
@@ -63,9 +73,4 @@ public class Stack {
         primero = ultimo = null;
         tamano = 0;
     }
-
-    public int getSize(){
-        return tamano;
-    }
-
 }

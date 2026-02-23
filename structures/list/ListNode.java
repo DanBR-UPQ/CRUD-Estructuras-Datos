@@ -16,4 +16,8 @@ public class ListNode {
     public ListNode getSig(){
         return sig;
     }
+
+    public void setSig(ListNode sig){
+        this.sig = sig;
+    }
 }

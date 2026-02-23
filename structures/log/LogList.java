@@ -1,4 +1,5 @@
 package structures.log;
+
 public class LogList {
     LogNode prim;
     LogNode ult;
@@ -9,11 +10,21 @@ public class LogList {
         tamano = 0;
     }
 
+    public int getSize(){
+        return tamano;
+    }
+    public LogNode getPrim(){
+        return prim;
+    }
+    public LogNode getUlt(){
+        return ult;
+    }
+
     public void addULT(LogNode nodo){
         if(tamano == 0){
             prim = ult = nodo;
         } else {
-            ult.sig = nodo;
+            ult.setSig(nodo);
             ult = nodo; 
         }
         tamano++;
@@ -26,13 +37,10 @@ public class LogList {
             LogNode test = prim;
 
             while(test != null){
-                test.log.imprimir();
-                test = test.sig;
+                test.getLog().imprimir();
+                test = test.getSig();
             }
         }
     }
 
-    public int getSize(){
-        return tamano;
-    }
 }

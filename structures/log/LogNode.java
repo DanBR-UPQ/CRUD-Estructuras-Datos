@@ -13,4 +13,11 @@ public class LogNode {
     public LogEntry getLog(){
         return log;
     }
+    public LogNode getSig(){
+        return sig;
+    }
+
+    public void setSig(LogNode sig){
+        this.sig = sig;
+    }
 }

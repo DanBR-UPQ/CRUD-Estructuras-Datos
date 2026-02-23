@@ -13,4 +13,11 @@ public class StackNode {
     public LinkedList getList(){
         return lista;
     }
+    public StackNode getSig(){
+        return sig;
+    }
+
+    public void setSig(StackNode sig){
+        this.sig = sig;
+    }
 }

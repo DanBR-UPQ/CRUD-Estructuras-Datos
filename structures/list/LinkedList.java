@@ -1,8 +1,8 @@
 package structures.list;
 public class LinkedList {
-    ListNode prim;
-    ListNode ult;
-    int tamano;
+    private ListNode prim;
+    private ListNode ult;
+    private int tamano;
 
     public LinkedList() {
         prim = ult = null;

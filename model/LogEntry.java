@@ -4,8 +4,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class LogEntry {
-    String fecha, operacion;
-    int objeto;
+    private final String fecha;
+    private final String operacion;
+    private final int objeto;
 
     public LogEntry(String operacion, int objeto) {
         

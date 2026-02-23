@@ -2,9 +2,9 @@ package structures.stack;
 import structures.list.LinkedList;
 
 public class Stack {
-	StackNode primero; 
-	StackNode ultimo;
-	int tamano;
+	private StackNode primero; 
+	private StackNode ultimo;
+	private int tamano;
 
 	public Stack() {
 		primero = ultimo = null;

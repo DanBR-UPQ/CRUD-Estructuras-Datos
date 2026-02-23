@@ -1,9 +1,9 @@
 package structures.log;
 
 public class LogList {
-    LogNode prim;
-    LogNode ult;
-    int tamano;
+    private LogNode prim;
+    private LogNode ult;
+    private int tamano;
 
     public LogList() {
         prim = ult = null;

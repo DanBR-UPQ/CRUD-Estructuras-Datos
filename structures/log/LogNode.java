@@ -2,8 +2,8 @@ package structures.log;
 import model.LogEntry;
 
 public class LogNode {
-    LogEntry log;
-    LogNode sig;
+    private final LogEntry log;
+    private LogNode sig;
 
     public LogNode(LogEntry log) {
         this.log = log;

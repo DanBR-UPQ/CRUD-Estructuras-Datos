@@ -2,8 +2,8 @@ package structures.stack;
 import structures.list.LinkedList;
 
 public class StackNode {
-    LinkedList lista;
-    StackNode sig;
+    private final LinkedList lista;
+    private StackNode sig;
 
     public StackNode(LinkedList lista) {
         this.lista = lista;

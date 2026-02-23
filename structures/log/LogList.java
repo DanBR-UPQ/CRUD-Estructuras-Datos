@@ -32,4 +32,7 @@ public class LogList {
         }
     }
 
+    public int getSize(){
+        return tamano;
+    }
 }

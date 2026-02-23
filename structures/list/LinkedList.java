@@ -9,6 +9,16 @@ public class LinkedList {
         tamano = 0;
     }
 
+    public int getSize(){
+        return tamano;
+    }
+    public ListNode getPrim(){
+        return prim;
+    }
+    public ListNode getUlt(){
+        return ult;
+    }
+
     public void addULT(ListNode nodo){
         if(tamano == 0){
             prim = ult = nodo;
@@ -36,7 +46,7 @@ public class LinkedList {
             ListNode test = prim;
 
             while(test != null){
-                if(test.jugador.id == ID){
+                if(test.jugador.getId() == ID){
                     return test; 
                 }
                 test = test.sig;

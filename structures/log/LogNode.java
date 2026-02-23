@@ -9,4 +9,8 @@ public class LogNode {
         this.log = log;
         sig = null;
     }
+
+    public LogEntry getLog(){
+        return log;
+    }
 }

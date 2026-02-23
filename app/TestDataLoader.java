@@ -2,11 +2,11 @@ package app;
 import model.Player;
 import model.LogEntry;
 import structures.list.LinkedList;
-import structures.list.LinkedList;
 import structures.list.ListNode;
-import structures.list.ListNode;
-import structures.list.ListNode;
+import structures.log.LogList;
+import structures.log.LogNode;
 import structures.stack.Stack;
+import structures.stack.StackNode;
 
 public class TestDataLoader {
     public static void agregarDatos(LinkedList lista, LogList listaLog, Stack undoPila) {

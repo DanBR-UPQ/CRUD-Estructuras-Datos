@@ -1,12 +1,11 @@
 package app;
 import java.util.Scanner;
-
-import model.Player;
 import model.LogEntry;
-import structures.list.LinkedList;
+import model.Player;
 import structures.list.LinkedList;
 import structures.list.ListNode;
-import structures.list.ListNode;
+import structures.log.LogList;
+import structures.log.LogNode;
 import structures.stack.Stack;
 
 public class CRUDService {
@@ -25,13 +24,13 @@ public class CRUDService {
             System.out.println("El id ya está ocupado");
         } else{
             System.out.println("El id ingresado es válido");
-            jugador.id = id;
+            jugador.setId(id);
             System.out.println("Ingrese el nombre: ");
-            jugador.nombre = teclado.nextLine();
+            jugador.setNombre(teclado.nextLine());
             System.out.println("Ingrese el juego: ");
-            jugador.juego = teclado.nextLine();
+            jugador.setJuego(teclado.nextLine());
             System.out.println("Ingrese la cantidad de chips: ");
-            jugador.chips = teclado.nextInt();
+            jugador.setChips(teclado.nextInt());
             teclado.nextLine();
 
             ListNode nodo = new ListNode(jugador);
@@ -46,7 +45,7 @@ public class CRUDService {
 
     public void eliminar(LinkedList lista, LogList listaLog){
 
-        if (lista.tamano == 0){
+        if (lista.getSize() == 0){
             System.out.println("No hay ningún registro..");
             return;
         }
@@ -73,7 +72,7 @@ public class CRUDService {
 
     public void actualizar(LinkedList lista, LogList listaLog){
 
-        if (lista.tamano == 0){
+        if (lista.getSize() == 0){
             System.out.println("No hay ningún registro..");
             return;
         }
@@ -102,23 +101,23 @@ public class CRUDService {
                     if(lista.buscarID(opc) != null){
                         System.out.println("El ID ya existe");
                     } else{
-                        nodo.jugador.id = opc;
+                        nodo.getJugador().setId(opc);
                         System.out.println("id cambiado exitosamente");
                     }
                     break;
                 case 2:
                     System.out.println("Ingrese el nuevo nombre");
-                    nodo.jugador.nombre = teclado.nextLine();
+                    nodo.getJugador().setNombre(teclado.nextLine());
                     System.out.println("nombre cambiado exitosamente");
                     break;
                 case 3:
                     System.out.println("Ingrese el nuevo juego");
-                    nodo.jugador.juego = teclado.nextLine();
+                    nodo.getJugador().setJuego(teclado.nextLine());
                     System.out.println("juego cambiado exitosamente");
                     break;
                 case 4:
                     System.out.println("Ingrese los nuevos chips");
-                    nodo.jugador.chips = teclado.nextInt();
+                    nodo.getJugador().setChips(teclado.nextInt());
                     teclado.nextLine();
                     System.out.println("chips cambiados exitosamente");
                     break;
@@ -136,7 +135,7 @@ public class CRUDService {
 
 
     public void imprimir(Stack pila){
-        if (pila.tamano == 0) {
+        if (pila.getSize() == 0) {
             System.out.println("No hay elementos");
         } else {
             pila.peek().imprimir();
@@ -148,14 +147,17 @@ public class CRUDService {
 
     public LinkedList duplicar(LinkedList lista){
         LinkedList nueva = new LinkedList();
-        ListNode temp = lista.prim;
+        ListNode temp = lista.getPrim();
 
 
         while (temp != null) {
-            Player jug = new Player(temp.jugador.id, temp.jugador.nombre, temp.jugador.chips, temp.jugador.juego);
+            Player jug = new Player(temp.getJugador().getId(), 
+                                    temp.getJugador().getNombre(), 
+                                    temp.getJugador().getChips(), 
+                                    temp.getJugador().getJuego());
             ListNode nodo = new ListNode(jug);
             nueva.addULT(nodo);
-            temp = temp.sig;
+            temp = temp.getSig();
         }
 
         return nueva;
@@ -166,7 +168,7 @@ public class CRUDService {
 
 
     public void undo(Stack UndoPila, Stack RedoPila){
-        if (UndoPila.tamano == 0){
+        if (UndoPila.getSize() == 0){
             System.out.println("No hay opciones que deshacer");
         } else {
             RedoPila.push(UndoPila.pop());
@@ -174,7 +176,7 @@ public class CRUDService {
         }  
     }
     public void redo(Stack UndoPila, Stack RedoPila){
-        if (RedoPila.tamano == 0){
+        if (RedoPila.getSize() == 0){
             System.out.println("No hay opciones que rehacer");
         } else {
             UndoPila.push(RedoPila.pop());

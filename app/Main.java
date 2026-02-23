@@ -1,10 +1,9 @@
 package app;
 import java.util.Scanner;
-
 import structures.list.LinkedList;
-import structures.list.LinkedList;
-import structures.list.ListNode;
+import structures.log.LogList;
 import structures.stack.Stack;
+import structures.stack.StackNode;
 
 public class Main {
 

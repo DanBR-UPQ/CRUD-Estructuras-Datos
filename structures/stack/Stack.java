@@ -1,3 +1,4 @@
+package structures.stack;
 import structures.list.LinkedList;
 
 public class Stack {
@@ -5,13 +6,13 @@ public class Stack {
 	StackNode ultimo;
 	int tamano;
 
-	Stack() {
+	public Stack() {
 		primero = ultimo = null;
 		tamano = 0;
 	}
 
 
-    void push(StackNode nodo){
+    public void push(StackNode nodo){
         if (tamano == 0){
             primero = ultimo = nodo;
         } else {
@@ -22,7 +23,7 @@ public class Stack {
     }
 
 
-    LinkedList peek() {
+    public LinkedList peek() {
         if(tamano == 0){
             /* System.out.println("No hay elementos"); */
             return null;
@@ -32,7 +33,7 @@ public class Stack {
     }
 
 
-    StackNode pop() {
+    public StackNode pop() {
         if (tamano == 0){
             System.out.println("No hay elementos");
             return null;
@@ -58,10 +59,13 @@ public class Stack {
     }
 
 
-    void borrar() {
+    public void borrar() {
         primero = ultimo = null;
         tamano = 0;
     }
 
+    public int getSize(){
+        return tamano;
+    }
 
 }

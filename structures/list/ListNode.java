@@ -9,4 +9,11 @@ public class ListNode {
         this.jugador = jugador;
         sig = null;
     }
+
+    public Player getJugador(){
+        return jugador;
+    }
+    public ListNode getSig(){
+        return sig;
+    }
 }

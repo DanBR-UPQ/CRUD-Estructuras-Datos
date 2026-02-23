@@ -9,4 +9,8 @@ public class StackNode {
         this.lista = lista;
         sig = null;
     }
+
+    public LinkedList getList(){
+        return lista;
+    }
 }

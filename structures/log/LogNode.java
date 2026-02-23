@@ -1,0 +1,12 @@
+package structures.log;
+import model.LogEntry;
+
+public class LogNode {
+    LogEntry log;
+    LogNode sig;
+
+    public LogNode(LogEntry log) {
+        this.log = log;
+        sig = null;
+    }
+}

@@ -1,15 +1,16 @@
-public class CJugador {
+package model;
+public class Player {
     int id, chips;
     String nombre, juego;
 
-    public CJugador(int id, String nombre, int chips, String juego) {
+    public Player(int id, String nombre, int chips, String juego) {
         this.id = id;
         this.chips = chips;
         this.nombre = nombre;
         this.juego = juego;
     }
 
-    public CJugador(){
+    public Player(){
         id = chips = 0;
         nombre = juego = "";
     }

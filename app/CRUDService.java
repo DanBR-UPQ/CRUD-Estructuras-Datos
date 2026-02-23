@@ -1,11 +1,20 @@
+package app;
 import java.util.Scanner;
 
-public class CRUDopciones {
+import model.Player;
+import model.LogEntry;
+import structures.list.LinkedList;
+import structures.list.LinkedList;
+import structures.list.ListNode;
+import structures.list.ListNode;
+import structures.stack.Stack;
+
+public class CRUDService {
     Scanner teclado = new Scanner(System.in);
     
-    public void agregar(CLista lista, CListaLog listaLog){
+    public void agregar(LinkedList lista, LogList listaLog){
         
-        CJugador jugador = new CJugador();
+        Player jugador = new Player();
         int id;
 
         System.out.println("Ingrese el id: ");
@@ -25,17 +34,17 @@ public class CRUDopciones {
             jugador.chips = teclado.nextInt();
             teclado.nextLine();
 
-            CNodo nodo = new CNodo(jugador);
+            ListNode nodo = new ListNode(jugador);
             lista.addULT(nodo);
 
-            CLog log = new CLog("agregar", id);
-            CNodo3 nodoLog = new CNodo3(log);
+            LogEntry log = new LogEntry("agregar", id);
+            LogNode nodoLog = new LogNode(log);
             listaLog.addULT(nodoLog);
         }
     }
 
 
-    public void eliminar(CLista lista, CListaLog listaLog){
+    public void eliminar(LinkedList lista, LogList listaLog){
 
         if (lista.tamano == 0){
             System.out.println("No hay ningún registro..");
@@ -46,7 +55,7 @@ public class CRUDopciones {
         int idEliminar = teclado.nextInt();
         teclado.nextLine();
 
-        CNodo nodo = lista.buscarID(idEliminar);
+        ListNode nodo = lista.buscarID(idEliminar);
 
         if(nodo == null){
             System.out.println("No hay jugador con ese id");
@@ -54,15 +63,15 @@ public class CRUDopciones {
             lista.eliminar(nodo);
             System.out.println("El registro fue eliminado exitosamente");
 
-            CLog log = new CLog("Eliminar", idEliminar);
-            CNodo3 nodoLog = new CNodo3(log);
+            LogEntry log = new LogEntry("Eliminar", idEliminar);
+            LogNode nodoLog = new LogNode(log);
             listaLog.addULT(nodoLog);
         }
 
     }
 
 
-    public void actualizar(CLista lista, CListaLog listaLog){
+    public void actualizar(LinkedList lista, LogList listaLog){
 
         if (lista.tamano == 0){
             System.out.println("No hay ningún registro..");
@@ -73,7 +82,7 @@ public class CRUDopciones {
         int idActualizar = teclado.nextInt();
         teclado.nextLine();
 
-        CNodo nodo = lista.buscarID(idActualizar);
+        ListNode nodo = lista.buscarID(idActualizar);
         
         if(nodo == null){
             System.out.println("No hay jugador con ese id");
@@ -117,8 +126,8 @@ public class CRUDopciones {
                     System.out.println("Opción inválida");
             }
 
-            CLog log = new CLog("Actualizar", idActualizar);
-            CNodo3 nodoLog = new CNodo3(log);
+            LogEntry log = new LogEntry("Actualizar", idActualizar);
+            LogNode nodoLog = new LogNode(log);
             listaLog.addULT(nodoLog);
         }
 
@@ -126,7 +135,7 @@ public class CRUDopciones {
     }
 
 
-    public void imprimir(CPila pila){
+    public void imprimir(Stack pila){
         if (pila.tamano == 0) {
             System.out.println("No hay elementos");
         } else {
@@ -137,14 +146,14 @@ public class CRUDopciones {
     }
 
 
-    public CLista duplicar(CLista lista){
-        CLista nueva = new CLista();
-        CNodo temp = lista.prim;
+    public LinkedList duplicar(LinkedList lista){
+        LinkedList nueva = new LinkedList();
+        ListNode temp = lista.prim;
 
 
         while (temp != null) {
-            CJugador jug = new CJugador(temp.jugador.id, temp.jugador.nombre, temp.jugador.chips, temp.jugador.juego);
-            CNodo nodo = new CNodo(jug);
+            Player jug = new Player(temp.jugador.id, temp.jugador.nombre, temp.jugador.chips, temp.jugador.juego);
+            ListNode nodo = new ListNode(jug);
             nueva.addULT(nodo);
             temp = temp.sig;
         }
@@ -156,7 +165,7 @@ public class CRUDopciones {
 
 
 
-    public void undo(CPila UndoPila, CPila RedoPila){
+    public void undo(Stack UndoPila, Stack RedoPila){
         if (UndoPila.tamano == 0){
             System.out.println("No hay opciones que deshacer");
         } else {
@@ -164,7 +173,7 @@ public class CRUDopciones {
             System.out.println("Undo realizado exitosamente");
         }  
     }
-    public void redo(CPila UndoPila, CPila RedoPila){
+    public void redo(Stack UndoPila, Stack RedoPila){
         if (RedoPila.tamano == 0){
             System.out.println("No hay opciones que rehacer");
         } else {

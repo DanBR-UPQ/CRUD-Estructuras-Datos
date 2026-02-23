@@ -1,12 +1,13 @@
+package model;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-public class CLog {
+public class LogEntry {
     String fecha, operacion;
     int objeto;
 
-    public CLog(String operacion, int objeto) {
+    public LogEntry(String operacion, int objeto) {
         
         this.operacion = operacion;
         this.objeto = objeto;

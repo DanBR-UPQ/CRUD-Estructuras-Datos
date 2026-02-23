@@ -1,15 +1,17 @@
-public class CPila {
-	CNodo2 primero; 
-	CNodo2 ultimo;
+import structures.list.LinkedList;
+
+public class Stack {
+	StackNode primero; 
+	StackNode ultimo;
 	int tamano;
 
-	CPila() {
+	Stack() {
 		primero = ultimo = null;
 		tamano = 0;
 	}
 
 
-    void push(CNodo2 nodo){
+    void push(StackNode nodo){
         if (tamano == 0){
             primero = ultimo = nodo;
         } else {
@@ -20,7 +22,7 @@ public class CPila {
     }
 
 
-    CLista peek() {
+    LinkedList peek() {
         if(tamano == 0){
             /* System.out.println("No hay elementos"); */
             return null;
@@ -30,20 +32,20 @@ public class CPila {
     }
 
 
-    CNodo2 pop() {
+    StackNode pop() {
         if (tamano == 0){
             System.out.println("No hay elementos");
             return null;
         } else if(tamano == 1){
-            CNodo2 temp = ultimo;
+            StackNode temp = ultimo;
             ultimo = primero = null;
             tamano--;
             return temp;
         } else{
-            CNodo2 temp = primero;
+            StackNode temp = primero;
             while(temp != null){
                 if(temp.sig == ultimo){
-                    CNodo2 temp2 = ultimo;
+                    StackNode temp2 = ultimo;
                     temp.sig = null;
                     tamano--;
                     ultimo = temp;

@@ -1,16 +1,22 @@
+package app;
 import java.util.Scanner;
 
-public class CRUDmain {
+import structures.list.LinkedList;
+import structures.list.LinkedList;
+import structures.list.ListNode;
+import structures.stack.Stack;
+
+public class Main {
 
     
 
     public static void main(String[] args) {
-        CPila UndoPila = new CPila();
-        CPila RedoPila = new CPila();
-        CListaLog listaLog = new CListaLog();
+        Stack UndoPila = new Stack();
+        Stack RedoPila = new Stack();
+        LogList listaLog = new LogList();
 
-        CLista lista = new CLista();
-        CRUDopciones opcion = new CRUDopciones();
+        LinkedList lista = new LinkedList();
+        CRUDService opcion = new CRUDService();
 
 
         Scanner teclado = new Scanner(System.in);
@@ -19,7 +25,7 @@ public class CRUDmain {
 
 
 
-        DatosTest.agregarDatos(lista, listaLog, UndoPila);
+        TestDataLoader.agregarDatos(lista, listaLog, UndoPila);
 
 
 
@@ -47,25 +53,25 @@ public class CRUDmain {
             System.out.println("\n----------------------------");
             switch(seleccion){
                 case 1: {
-                    CLista nueva = opcion.duplicar(lista);
+                    LinkedList nueva = opcion.duplicar(lista);
                     opcion.agregar(nueva, listaLog);
-                    CNodo2 nodo = new CNodo2(nueva);
+                    StackNode nodo = new StackNode(nueva);
                     UndoPila.push(nodo);
                     RedoPila.borrar();
                     break;
                 }
                 case 2: {
-                    CLista nueva = opcion.duplicar(lista);
+                    LinkedList nueva = opcion.duplicar(lista);
                     opcion.eliminar(nueva, listaLog);
-                    CNodo2 nodo = new CNodo2(nueva);
+                    StackNode nodo = new StackNode(nueva);
                     UndoPila.push(nodo);
                     RedoPila.borrar();
                     break;
                 }
                 case 3: {
-                    CLista nueva = opcion.duplicar(lista);
+                    LinkedList nueva = opcion.duplicar(lista);
                     opcion.actualizar(nueva, listaLog);
-                    CNodo2 nodo = new CNodo2(nueva);
+                    StackNode nodo = new StackNode(nueva);
                     UndoPila.push(nodo);
                     RedoPila.borrar();
                     break;
@@ -90,7 +96,7 @@ public class CRUDmain {
 
             
             if(UndoPila.peek() == null) {
-                lista = new CLista();
+                lista = new LinkedList();
             } else {
                 lista = UndoPila.peek();
             }

@@ -1,14 +1,15 @@
-public class CListaLog {
-    CNodo3 prim;
-    CNodo3 ult;
+package structures.log;
+public class LogList {
+    LogNode prim;
+    LogNode ult;
     int tamano;
 
-    public CListaLog() {
+    public LogList() {
         prim = ult = null;
         tamano = 0;
     }
 
-    public void addULT(CNodo3 nodo){
+    public void addULT(LogNode nodo){
         if(tamano == 0){
             prim = ult = nodo;
         } else {
@@ -22,7 +23,7 @@ public class CListaLog {
         if (tamano == 0){
             System.out.println("No hay ningun registro..");
         } else {
-            CNodo3 test = prim;
+            LogNode test = prim;
 
             while(test != null){
                 test.log.imprimir();

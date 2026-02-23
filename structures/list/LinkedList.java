@@ -1,14 +1,15 @@
-public class CLista {
-    CNodo prim;
-    CNodo ult;
+package structures.list;
+public class LinkedList {
+    ListNode prim;
+    ListNode ult;
     int tamano;
 
-    public CLista() {
+    public LinkedList() {
         prim = ult = null;
         tamano = 0;
     }
 
-    public void addULT(CNodo nodo){
+    public void addULT(ListNode nodo){
         if(tamano == 0){
             prim = ult = nodo;
         } else {
@@ -22,7 +23,7 @@ public class CLista {
         if (tamano == 0){
             System.out.println("No hay ningun registro..");
         } else {
-            CNodo test = prim;
+            ListNode test = prim;
 
             while(test != null){
                 test.jugador.imprimir();
@@ -31,8 +32,8 @@ public class CLista {
         }
     }
 
-    public CNodo buscarID(int ID){
-            CNodo test = prim;
+    public ListNode buscarID(int ID){
+            ListNode test = prim;
 
             while(test != null){
                 if(test.jugador.id == ID){
@@ -43,8 +44,8 @@ public class CLista {
             return null;
     }
 
-    public void eliminar(CNodo nodo){
-        CNodo test = prim;
+    public void eliminar(ListNode nodo){
+        ListNode test = prim;
 
         if(tamano == 1){
             prim = ult = null;

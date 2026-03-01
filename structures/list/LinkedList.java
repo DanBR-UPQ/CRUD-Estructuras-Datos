@@ -36,7 +36,7 @@ public class LinkedList {
             ListNode test = prim;
 
             while(test != null){
-                test.getJugador().imprimir();
+                test.getAsset().imprimir();
                 test = test.getSig();
             }
         }
@@ -46,7 +46,7 @@ public class LinkedList {
             ListNode test = prim;
 
             while(test != null){
-                if(test.getJugador().getId() == ID){
+                if(test.getAsset().getId() == ID){
                     return test; 
                 }
                 test = test.getSig();

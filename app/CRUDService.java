@@ -1,7 +1,7 @@
 package app;
 import java.util.Scanner;
+import model.Asset;
 import model.LogEntry;
-import model.Player;
 import structures.list.LinkedList;
 import structures.list.ListNode;
 import structures.log.LogList;
@@ -13,7 +13,7 @@ public class CRUDService {
     
     public void agregar(LinkedList lista, LogList listaLog){
         
-        Player jugador = new Player();
+        Asset asset = new Asset();
         int id;
 
         System.out.println("Ingrese el id: ");
@@ -24,16 +24,16 @@ public class CRUDService {
             System.out.println("El id ya está ocupado");
         } else{
             System.out.println("El id ingresado es válido");
-            jugador.setId(id);
+            asset.setId(id);
             System.out.println("Ingrese el nombre: ");
-            jugador.setNombre(teclado.nextLine());
-            System.out.println("Ingrese el juego: ");
-            jugador.setJuego(teclado.nextLine());
-            System.out.println("Ingrese la cantidad de chips: ");
-            jugador.setChips(teclado.nextInt());
+            asset.setAssetName(teclado.nextLine());
+            System.out.println("Ingrese la categoría: ");
+            asset.setCategory(teclado.nextLine());
+            System.out.println("Ingrese el valor monetario: ");
+            asset.setAssetValue(teclado.nextInt());
             teclado.nextLine();
 
-            ListNode nodo = new ListNode(jugador);
+            ListNode nodo = new ListNode(asset);
             lista.addULT(nodo);
 
             LogEntry log = new LogEntry("agregar", id);
@@ -50,17 +50,17 @@ public class CRUDService {
             return;
         }
 
-        System.out.println("Ingrese el Id del usuario a eliminar:");
+        System.out.println("Ingrese el Id del activo a eliminar:");
         int idEliminar = teclado.nextInt();
         teclado.nextLine();
 
         ListNode nodo = lista.buscarID(idEliminar);
 
         if(nodo == null){
-            System.out.println("No hay jugador con ese id");
+            System.out.println("No hay activo con ese id");
         } else {
             lista.eliminar(nodo);
-            System.out.println("El registro fue eliminado exitosamente");
+            System.out.println("El activo fue eliminado exitosamente");
 
             LogEntry log = new LogEntry("Eliminar", idEliminar);
             LogNode nodoLog = new LogNode(log);
@@ -77,18 +77,18 @@ public class CRUDService {
             return;
         }
 
-        System.out.println("Ingrese el Id del usuario a actualizar: ");
+        System.out.println("Ingrese el Id del activo a actualizar: ");
         int idActualizar = teclado.nextInt();
         teclado.nextLine();
 
         ListNode nodo = lista.buscarID(idActualizar);
         
         if(nodo == null){
-            System.out.println("No hay jugador con ese id");
+            System.out.println("No hay activo con ese id");
         } else {
            
             System.out.println("Ingrese el dato que desea cambiar");
-            System.out.println("1. Cambiar ID \n2. Cambiar Nombre \n3. Cambiar Juego \n4. Cambiar la cantidad de Chips");
+            System.out.println("1. Cambiar ID \n2. Cambiar Nombre \n3. Cambiar Categoría \n4. Cambiar Valor Monetario");
             int opc = teclado.nextInt();
             teclado.nextLine();
 
@@ -101,25 +101,25 @@ public class CRUDService {
                     if(lista.buscarID(opc) != null){
                         System.out.println("El ID ya existe");
                     } else{
-                        nodo.getJugador().setId(opc);
+                        nodo.getAsset().setId(opc);
                         System.out.println("id cambiado exitosamente");
                     }
                     break;
                 case 2:
                     System.out.println("Ingrese el nuevo nombre");
-                    nodo.getJugador().setNombre(teclado.nextLine());
+                    nodo.getAsset().setAssetName(teclado.nextLine());
                     System.out.println("nombre cambiado exitosamente");
                     break;
                 case 3:
-                    System.out.println("Ingrese el nuevo juego");
-                    nodo.getJugador().setJuego(teclado.nextLine());
-                    System.out.println("juego cambiado exitosamente");
+                    System.out.println("Ingrese la nueva categoría");
+                    nodo.getAsset().setCategory(teclado.nextLine());
+                    System.out.println("categoría cambiada exitosamente");
                     break;
                 case 4:
-                    System.out.println("Ingrese los nuevos chips");
-                    nodo.getJugador().setChips(teclado.nextInt());
+                    System.out.println("Ingrese el nuevo valor");
+                    nodo.getAsset().setAssetValue(teclado.nextInt());
                     teclado.nextLine();
-                    System.out.println("chips cambiados exitosamente");
+                    System.out.println("valor cambiado exitosamente");
                     break;
                 default:
                     System.out.println("Opción inválida");
@@ -151,11 +151,11 @@ public class CRUDService {
 
 
         while (temp != null) {
-            Player jug = new Player(temp.getJugador().getId(), 
-                                    temp.getJugador().getNombre(), 
-                                    temp.getJugador().getChips(), 
-                                    temp.getJugador().getJuego());
-            ListNode nodo = new ListNode(jug);
+            Asset asset = new Asset(temp.getAsset().getId(), 
+                                    temp.getAsset().getAssetName(), 
+                                    temp.getAsset().getAssetValue(), 
+                                    temp.getAsset().getCategory());
+            ListNode nodo = new ListNode(asset);
             nueva.addULT(nodo);
             temp = temp.getSig();
         }

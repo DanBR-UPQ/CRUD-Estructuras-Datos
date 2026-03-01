@@ -28,11 +28,11 @@ public class Main {
 
 
 
-        System.out.println("Bienvenido al sistema CRUDJugadores");
+        System.out.println("Bienvenido al sistema de manejo de activos");
 
         while(continuar){
 
-            System.out.println("\nMenu Principal \n--------  JUGADORES  --------");
+            System.out.println("\nMenu Principal \n--------  ACTIVOS  --------");
             System.out.println("1. Agregar          \t5. Rehacer");
             System.out.println("2. Eliminar         \t6. Log");
             System.out.println("3. Actualizar       \t7. Imprimir");
@@ -88,7 +88,7 @@ public class Main {
                     opcion.imprimir(UndoPila);
                     break;
                 case 8:
-                    System.out.println("Gracias por usar el sistema CRUDJugadores");
+                    System.out.println("Gracias por usar el sistema de manejo de activos");
                     continuar = false;
             }
             System.out.println("----------------------------\n");

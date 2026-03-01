@@ -1,17 +1,17 @@
 package structures.list;
-import model.Player;
+import model.Asset;
 
 public class ListNode {
-    private final Player jugador;
+    private final Asset asset;
     private ListNode sig;
 
-    public ListNode(Player jugador) {
-        this.jugador = jugador;
+    public ListNode(Asset asset) {
+        this.asset = asset;
         sig = null;
     }
 
-    public Player getJugador(){
-        return jugador;
+    public Asset getAsset(){
+        return asset;
     }
     public ListNode getSig(){
         return sig;
